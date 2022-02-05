@@ -32,12 +32,17 @@ export default function App() {
   const [userName, setUserName] = useState("");
   const [hasError, setHasError] = useState(false);
   const [isClean, setIsClean] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <div className="App">
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          setIsSubmitting(true);
+          setTimeout(() => {
+            setIsSubmitting(false);
+          }, 5000);
           if (!isRequired(userName)) {
             setHasError(true);
             return;
@@ -63,7 +68,7 @@ export default function App() {
         {!hasNumbers(userName) && !isClean ? (
           <p style={{ color: "red" }}>User Name should contain one number</p>
         ) : null}
-        <button>Submit</button>
+        <button>Submit {isSubmitting ? "ting" : ""}</button>
       </form>
     </div>
   );
