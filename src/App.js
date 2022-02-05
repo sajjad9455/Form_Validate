@@ -68,7 +68,9 @@ export default function App() {
         {!hasNumbers(userName) && !isClean ? (
           <p style={{ color: "red" }}>User Name should contain one number</p>
         ) : null}
-        <button>Submit {isSubmitting ? "ting" : ""}</button>
+        <button disabled={isSubmitting}>
+          Submit {isSubmitting ? "ting" : ""}
+        </button>
       </form>
     </div>
   );
